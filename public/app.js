@@ -449,7 +449,6 @@ function renderAdd(container) {
 }
 
 // Init
-// Init
 async function init() {
     const token = localStorage.getItem('token');
     if (token) {
