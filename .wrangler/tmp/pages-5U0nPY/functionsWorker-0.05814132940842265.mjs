@@ -6,7 +6,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// ../.wrangler/tmp/bundle-eB8y8p/checked-fetch.js
+// ../.wrangler/tmp/bundle-OxMrsi/checked-fetch.js
 var urls = /* @__PURE__ */ new Set();
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
@@ -32,7 +32,7 @@ globalThis.fetch = new Proxy(globalThis.fetch, {
   }
 });
 
-// ../.wrangler/tmp/bundle-eB8y8p/strip-cf-connecting-ip-header.js
+// ../.wrangler/tmp/bundle-OxMrsi/strip-cf-connecting-ip-header.js
 function stripCfConnectingIPHeader(input, init) {
   const request = new Request(input, init);
   request.headers.delete("CF-Connecting-IP");
@@ -1472,7 +1472,7 @@ var comparePassword = /* @__PURE__ */ __name(async (password, storedUrl) => {
 }, "comparePassword");
 var generateToken = /* @__PURE__ */ __name(async (payload, secret) => {
   const secretKey = new TextEncoder().encode(secret);
-  const token = await new SignJWT(payload).setProtectedHeader({ alg: "HS256" }).setExpirationTime("24h").sign(secretKey);
+  const token = await new SignJWT(payload).setProtectedHeader({ alg: "HS256" }).setExpirationTime("30d").sign(secretKey);
   return token;
 }, "generateToken");
 var verifyToken = /* @__PURE__ */ __name(async (token, secret) => {
@@ -1567,7 +1567,7 @@ var onRequestPost2 = /* @__PURE__ */ __name(async (context) => {
     const valid = await comparePassword(password, user.password_hash);
     if (!valid)
       return jsonResponse({ error: "Invalid credentials" }, 401);
-    const token = generateToken({ id: user.id, email: user.email, is_admin: user.is_admin }, env.JWT_SECRET);
+    const token = await generateToken({ id: user.id, email: user.email, is_admin: user.is_admin }, env.JWT_SECRET);
     return jsonResponse({ token, user: { id: user.id, email: user.email, is_admin: user.is_admin } });
   }
   if (url.pathname.endsWith("/register")) {
@@ -2259,7 +2259,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// ../.wrangler/tmp/bundle-eB8y8p/middleware-insertion-facade.js
+// ../.wrangler/tmp/bundle-OxMrsi/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -2291,7 +2291,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// ../.wrangler/tmp/bundle-eB8y8p/middleware-loader.entry.ts
+// ../.wrangler/tmp/bundle-OxMrsi/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;

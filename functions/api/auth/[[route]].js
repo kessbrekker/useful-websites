@@ -23,7 +23,7 @@ export const onRequestPost = async (context) => {
         const valid = await comparePassword(password, user.password_hash);
         if (!valid) return jsonResponse({ error: 'Invalid credentials' }, 401);
 
-        const token = generateToken({ id: user.id, email: user.email, is_admin: user.is_admin }, env.JWT_SECRET);
+        const token = await generateToken({ id: user.id, email: user.email, is_admin: user.is_admin }, env.JWT_SECRET);
         return jsonResponse({ token, user: { id: user.id, email: user.email, is_admin: user.is_admin } });
     }
 
