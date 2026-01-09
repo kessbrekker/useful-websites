@@ -1,0 +1,15 @@
+{
+  "name": "useful-websites",
+  "version": "1.0.0",
+  "description": "A modern website directory platform",
+  "scripts": {
+    "dev": "wrangler pages dev public --live-reload",
+    "deploy": "wrangler pages deploy public"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "jose": "^6.1.3"
+  }
+}

@@ -1,0 +1,14 @@
+name = "useful-websites"
+compatibility_date = "2024-04-05"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "useful-websites-db"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Placeholder, will be used locally
+
+[vars]
+JWT_SECRET = "dev-secret-key-change-in-prod"
+ADMIN_SECRET_TOKEN = "dev-admin-token"
