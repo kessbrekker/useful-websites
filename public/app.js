@@ -449,5 +449,20 @@ function renderAdd(container) {
 }
 
 // Init
-window.addEventListener('popstate', router);
-router();
+// Init
+async function init() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // Optimistically set a flag or try to fetch user immediately
+        const res = await api.getMe();
+        if (res.status === 200) {
+            state.user = res.data.user;
+        } else {
+            localStorage.removeItem('token');
+        }
+    }
+    window.addEventListener('popstate', router);
+    router();
+}
+
+init();
