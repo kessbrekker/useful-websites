@@ -77,13 +77,23 @@ export const fetchWebsiteMetadata = async (targetUrl) => {
         const data = await res.json();
 
         if (data.status === 'success') {
+            let image = data.data.screenshot?.url || data.data.image?.url;
+            if (!image) {
+                // Fallback to thum.io
+                image = `https://image.thum.io/get/width/400/crop/800/noanimate/${targetUrl}`;
+            }
             return {
                 title: data.data.title || targetUrl,
-                screenshot_url: data.data.screenshot?.url || null,
+                screenshot_url: image,
                 url: data.data.url
             };
         }
-        return { title: targetUrl, screenshot_url: null, url: targetUrl };
+        // Fallback if API fails completely
+        return {
+            title: targetUrl,
+            screenshot_url: `https://image.thum.io/get/width/400/crop/800/noanimate/${targetUrl}`,
+            url: targetUrl
+        };
     } catch (e) {
         console.error('Metadata fetch failed:', e);
         return { title: targetUrl, screenshot_url: null, url: targetUrl };
