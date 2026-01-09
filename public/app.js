@@ -337,7 +337,7 @@ function renderAccount(container) {
     <header class="page-header">
       <h1 class="page-title">Account Settings</h1>
     </header>
-    <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 500px; box-shadow: var(--shadow);">
+    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; max-width: 500px; box-shadow: var(--shadow);">
         <form id="update-form">
             <div class="form-group">
                 <label class="form-label">Email</label>
