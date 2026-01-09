@@ -245,7 +245,7 @@ body {
 
 .add-card {
     flex: 1;
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
