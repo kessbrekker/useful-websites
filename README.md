@@ -40,6 +40,7 @@ A modern, minimalist website directory built with Vanilla HTML/JS, running on Cl
 4. **Database Binding** (Settings > Functions):
    - Create a D1 Database.
    - Bind it to the variable name: `DB`.
+   - **Important**: The `wrangler.toml` file has the D1 binding commented out to prevent deployment errors. For production, you **unconditionally** must configure the binding in the Cloudflare Dashboard. For local development, the `npm run dev` script automatically binds a local DB.
 
 ### Note on "npm run deploy"
 The `npm run deploy` script in `package.json` is for **manual** direct uploads from your local terminal. **Do not** use this as your Build Command in Cloudflare Pages, as it requires authentication credentials that are not present in the CI environment.

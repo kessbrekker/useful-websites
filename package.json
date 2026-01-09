@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "A modern website directory platform",
     "scripts": {
-        "dev": "wrangler pages dev public --live-reload",
+        "dev": "wrangler pages dev public --live-reload --d1 DB",
         "deploy": "wrangler pages deploy public",
         "build": "echo 'Build step complete'"
     },
