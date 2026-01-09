@@ -216,8 +216,8 @@ function renderCard(website, isFavView = false) {
       </button>
       ` : ''}
       <div class="card-content">
-        <h3 class="card-title">${new URL(website.url).hostname || 'Untitled'}</h3>
-        <a href="${website.url}" target="_blank" class="card-link">${website.title}</a>
+        <h3 class="card-title">${website.title || 'Untitled'}</h3>
+        <a href="${website.url}" target="_blank" class="card-link">${new URL(website.url).hostname}</a>
       </div>
     </div>
   `;
