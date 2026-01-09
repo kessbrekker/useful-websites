@@ -7,7 +7,7 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "useful-websites-db"
-database_id = "e57ad85e-6e94-4cd2-9858-299a93077626" # Random valid UUID for local dev
+database_id = "8c46a0b4-93e8-458a-9cfb-e56797ece470" # Random valid UUID for local dev
 
 [vars]
 JWT_SECRET = "dev-secret-key-change-in-prod"
