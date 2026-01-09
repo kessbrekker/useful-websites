@@ -45,7 +45,7 @@ export const generateToken = async (payload, secret) => {
     const secretKey = new TextEncoder().encode(secret);
     const token = await new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
-        .setExpirationTime('24h')
+        .setExpirationTime('30d')
         .sign(secretKey);
     return token;
 };
