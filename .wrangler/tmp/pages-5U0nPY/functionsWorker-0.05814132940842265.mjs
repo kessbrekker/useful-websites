@@ -6,7 +6,7 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// ../.wrangler/tmp/bundle-OxMrsi/checked-fetch.js
+// ../.wrangler/tmp/bundle-NiSfiY/checked-fetch.js
 var urls = /* @__PURE__ */ new Set();
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
@@ -32,7 +32,7 @@ globalThis.fetch = new Proxy(globalThis.fetch, {
   }
 });
 
-// ../.wrangler/tmp/bundle-OxMrsi/strip-cf-connecting-ip-header.js
+// ../.wrangler/tmp/bundle-NiSfiY/strip-cf-connecting-ip-header.js
 function stripCfConnectingIPHeader(input, init) {
   const request = new Request(input, init);
   request.headers.delete("CF-Connecting-IP");
@@ -1500,13 +1500,21 @@ var fetchWebsiteMetadata = /* @__PURE__ */ __name(async (targetUrl) => {
     const res = await fetch(api);
     const data = await res.json();
     if (data.status === "success") {
+      let image = data.data.screenshot?.url || data.data.image?.url;
+      if (!image) {
+        image = `https://image.thum.io/get/width/400/crop/800/noanimate/${targetUrl}`;
+      }
       return {
         title: data.data.title || targetUrl,
-        screenshot_url: data.data.screenshot?.url || null,
+        screenshot_url: image,
         url: data.data.url
       };
     }
-    return { title: targetUrl, screenshot_url: null, url: targetUrl };
+    return {
+      title: targetUrl,
+      screenshot_url: `https://image.thum.io/get/width/400/crop/800/noanimate/${targetUrl}`,
+      url: targetUrl
+    };
   } catch (e) {
     console.error("Metadata fetch failed:", e);
     return { title: targetUrl, screenshot_url: null, url: targetUrl };
@@ -2259,7 +2267,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// ../.wrangler/tmp/bundle-OxMrsi/middleware-insertion-facade.js
+// ../.wrangler/tmp/bundle-NiSfiY/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -2291,7 +2299,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// ../.wrangler/tmp/bundle-OxMrsi/middleware-loader.entry.ts
+// ../.wrangler/tmp/bundle-NiSfiY/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;
