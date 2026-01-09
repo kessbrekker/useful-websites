@@ -453,11 +453,17 @@ async function init() {
     const token = localStorage.getItem('token');
     if (token) {
         // Optimistically set a flag or try to fetch user immediately
-        const res = await api.getMe();
-        if (res.status === 200) {
-            state.user = res.data.user;
-        } else {
-            localStorage.removeItem('token');
+        try {
+            const res = await api.getMe();
+            console.log('Init Auth Check:', res.status, res.data);
+            if (res.status === 200) {
+                state.user = res.data.user;
+            } else {
+                console.warn('Init Auth Failed, clearing token');
+                localStorage.removeItem('token');
+            }
+        } catch (err) {
+            console.error('Init Error:', err);
         }
     }
     window.addEventListener('popstate', router);
